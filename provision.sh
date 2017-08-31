@@ -217,13 +217,13 @@ EOF
 fi
 
 if [[ ! -d "$HOME/workspace/deployments/microbosh/deployments" ]]; then
-  bosh bootstrap deploy
+  bosh-bootstrap deploy
 fi
 
 rebuild_micro_bosh_easy() {
   echo "Retry deploying the micro bosh, attempting bosh bootstrap delete..."
-  bosh bootstrap delete || rebuild_micro_bosh_hard
-  bosh bootstrap deploy
+  bosh-bootstrap delete || rebuild_micro_bosh_hard
+  bosh-bootstrap deploy
   bosh -n target https://${boshDirectorHost}:25555
   bosh login admin admin
 }
